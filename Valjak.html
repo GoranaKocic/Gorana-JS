@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zapremina Valjka</title>
+</head>
+<body>
+
+<h2>Izračunajte Zapreminu Valjka</h2>
+
+<form id="valjakForm">
+    <label for="poluprecnik">Poluprečnik (r):</label>
+    <input type="number" id="poluprecnik" required>
+    <br><br>
+
+    <label for="visina">Visina (H):</label>
+    <input type="number" id="visina" required>
+    <br><br>
+
+    <button type="button" onclick="izracunajZapreminu()">Izračunaj</button>
+</form>
+
+<div id="rezultat"></div>
+
+<script>
+    function izracunajZapreminu() {
+        const pi = 3.14;
+
+        const r = document.getElementById("poluprecnik").value;
+        const H = document.getElementById("visina").value;
+
+        if (r > 0 && H > 0) {
+            const zapremina = pi * r * r * H;
+            document.getElementById("rezultat").innerHTML = 
+                `<p>Zapremina valjka je: <strong>${zapremina}</strong> kubnih jedinica.</p>`;
+        } else {
+            document.getElementById("rezultat").innerHTML = 
+                `<p>Unesite pozitivne vrednosti za poluprečnik i visinu.</p>`;
+        }
+    }
+</script>
+
+</body>
+</html>
