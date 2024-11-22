@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osnovne Računske Operacije</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #rezultat {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Kalkulator Osnovnih Operacija</h2>
+<p>Kliknite na dugme da biste započeli unos podataka.</p>
+
+<button onclick="pokreniKalkulator()">Pokreni Kalkulator</button>
+
+<div id="rezultat"></div>
+
+<script>
+    function pokreniKalkulator() {
+        const prviBroj = parseFloat(prompt("Unesite prvi broj:"));
+        if (isNaN(prviBroj)) {
+            alert("Morate uneti važeći broj!");
+            return;
+        }
+
+        const operacija = prompt("Unesite operaciju (+, -, *, /):");
+        if (!['+', '-', '*', '/'].includes(operacija)) {
+            alert("Morate uneti važeću operaciju (+, -, *, /)!");
+            return;
+        }
+
+        const drugiBroj = parseFloat(prompt("Unesite drugi broj:"));
+        if (isNaN(drugiBroj)) {
+            alert("Morate uneti važeći broj!");
+            return;
+        }
+
+        let rezultat;
+        switch (operacija) {
+            case '+':
+                rezultat = prviBroj + drugiBroj;
+                break;
+            case '-':
+                rezultat = prviBroj - drugiBroj;
+                break;
+            case '*':
+                rezultat = prviBroj * drugiBroj;
+                break;
+            case '/':
+                if (drugiBroj === 0) {
+                    alert("Deljenje nulom nije dozvoljeno!");
+                    return;
+                }
+                rezultat = prviBroj / drugiBroj;
+                break;
+            default:
+                alert("Nepoznata operacija!");
+                return;
+        }
+
+        document.getElementById("rezultat").innerHTML = 
+            `<p>Rezultat operacije <strong>${prviBroj} ${operacija} ${drugiBroj}</strong> je: <strong>${rezultat}</strong>.</p>`;
+    }
+</script>
+
+</body>
+</html>
